@@ -4,7 +4,7 @@ metadata:
   finalizers:
   - argoproj.io/finalizer
   name: argocd-gitops
-  namespace: argocd-gitops-gitops
+  namespace: argocd-gitops
 spec:
   controller:
     processors: {}
