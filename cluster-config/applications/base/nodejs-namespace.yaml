@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nodejs-namespace-app
+spec:
+  destination:
+    namespace: nodejs
+    server: https://kubernetes.default.svc
+  project: nodejs
+  source:
+    path: nodejs-persistent/namespace
+    repoURL: https://github.com/welshstew/gitops-examples
+    targetRevision: master
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  sync:
+    comparedTo:
+      destination:
+        namespace: nodejs
+        server: https://kubernetes.default.svc
+      source:
+        path: nodejs-persistent/namespace
+        repoURL: https://github.com/welshstew/gitops-examples
+        targetRevision: master
